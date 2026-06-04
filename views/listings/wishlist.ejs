@@ -1,8 +1,51 @@
 <% layout("/layouts/boilerplate") %>
+<style>
+    .listing-card img{
+    height:220px;
+    object-fit:cover;
+}
+.listing-card{
+    margin-bottom: 1.5rem !important;
+    overflow: hidden;
+    margin-bottom: 2rem !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.listing-card:hover{
+    transform: translateY(-3px);
+    transition: 0.3s;
+}
+
+.row.g-3{
+    row-gap: 1.5rem;
+}
+.card-body{
+    padding: 1rem;
+}
+@media(max-width:768px){
+
+    .listing-card{
+        margin:0 !important;
+    }
+
+    .listing-card img{
+        height:180px;
+    }
+
+    .card-body .d-flex{
+        flex-direction:column;
+    }
+
+    .card-body .btn{
+        width:50%;
+    }
+}
+</style>
 
 <h2 class="mt-3"> My Wishlist</h2>
 
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+<div class="row g-3">
 
     <% if(wishlist.length === 0) { %>
 
@@ -11,8 +54,8 @@
     <% } %>
 
     <% for(let listing of wishlist) { %>
-
-        <div class="card col listing-card m-3">
+       <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+        <div class="card listing-card h-100  shadow-sm">
 
             <img
                 src="<%= listing.image.url %>"
@@ -45,7 +88,7 @@
                    method="POST"
                 >
 
-                <button class="btn btn-danger">
+                <button class="btn btn-danger mb-3">
                        Remove
                 </button>
 
@@ -54,6 +97,7 @@
             </div>
 
         </div>
+      </div>
 
     <% } %>
 
