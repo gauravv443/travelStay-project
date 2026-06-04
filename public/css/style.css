@@ -51,12 +51,6 @@ body{
     
 }
 
-.listing-card{
-    border: none !important;
-    margin-bottom: 2rem;
-    
-}
-
 .card-img-top{
     border-radius:1rem !important ;
     width: 100%;
@@ -110,3 +104,33 @@ body{
     width: 100%;
 } 
 
+.listing-card{
+    border:none !important;
+    margin-bottom:1rem;
+}
+
+.listing-img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    border-radius:18px;
+}
+
+/* tablet */
+@media(max-width:992px){
+    .listing-img{
+        height:220px;
+    }
+}
+
+/* mobile */
+@media(max-width:576px){
+    .listing-img{
+        height:160px;
+        border-radius:14px;
+    }
+
+    .card-text{
+        font-size:0.9rem;
+    }
+}
