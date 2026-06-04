@@ -23,6 +23,10 @@
 .card-body{
     padding: 1rem;
 }
+
+.card-body a{
+   height: 38px;
+}
 @media(max-width:768px){
 
     .listing-card{
@@ -76,7 +80,7 @@
                 <p class="card-text">
                     &#8377;<%=listing.price.toLocaleString("en-IN")%>/night
                 </p>
-                <div class="d-flex gap-2 mt-2">
+                <div class="d-flex gap-2 mt-3">
                 <a
                     href="/listings/<%= listing._id %>"
                     class="btn btn-dark"
