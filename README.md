@@ -5,6 +5,8 @@ Travel Stay is a full-stack web application inspired by Airbnb that enables user
 # Features
 
 - User Registration and Login
+- AI Assitant Feature(Powered by OpenRouter API)
+- Dark Mode Support
 - Secure Authentication using Passport.js
 - Session-Based Authentication & Authorization
 - Create, Edit, and Delete Property Listings
