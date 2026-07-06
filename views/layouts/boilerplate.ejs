@@ -32,6 +32,31 @@
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
       <script src="/js/script.js"></script>
+      <!-- AI Chat Button -->
+<button id="ai-chat-btn">
+    🤖
+</button>
+
+<!-- AI Chat Box -->
+<div id="ai-chat-box" style="display:none;">
+    <div id="ai-header">
+        Travel AI Assistant
+        <span id="close-chat">✖</span>
+    </div>
+
+    <div id="chat-messages"></div>
+
+    <div id="chat-input">
+        <input
+            type="text"
+            id="user-message"
+            placeholder="Ask about your trip..."
+        />
+        <button id="send-message">Send</button>
+    </div>
+</div>
+
+<script src="/js/ai.js"></script>
      
 </body>
 

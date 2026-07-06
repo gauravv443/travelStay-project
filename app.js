@@ -15,6 +15,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const user = require("./models/user.js");
+const aiRouter = require("./routes/ai");
 const ExpressError = require("./utils/ExpressError");
 
 
@@ -32,9 +33,11 @@ async function main() {
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
+app.use("/ai", aiRouter);
 
 const store=MongoStore.default.create({
     mongoUrl:dbUrl,

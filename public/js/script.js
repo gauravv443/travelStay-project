@@ -19,7 +19,7 @@
       }, false)
     })
 })()
-
+if (document.getElementById("map")){
 var map = L.map('map').setView([coordinates[1], coordinates[0]], 13);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -34,3 +34,26 @@ marker.bindPopup(`
     <b>${hotelTitle}</b><br>
     ${hotelLocation}
 `);
+  }
+const themeBtn = document.getElementById("theme-toggle");
+
+if (themeBtn) {
+
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        themeBtn.innerHTML = "☀️";
+    }
+
+    themeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+            themeBtn.innerHTML = "☀️";
+        } else {
+            localStorage.setItem("theme", "light");
+            themeBtn.innerHTML = "🌙";
+        }
+    });
+
+}
