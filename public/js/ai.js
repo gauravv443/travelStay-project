@@ -55,3 +55,10 @@ ${data.reply}
         messages.innerHTML += `<p><b>AI:</b> Something went wrong!</p>`;
     }
 };
+
+input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        sendBtn.click();
+    }
+});
