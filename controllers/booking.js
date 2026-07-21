@@ -29,25 +29,25 @@ module.exports.createBooking = async (req, res) => {
     booking.user = req.user._id;
 
     const existingBooking = await Booking.findOne({
-    listing: listing._id,
-    status: "Booked",
-    checkIn: { $lt: req.body.booking.checkOut },
-    checkOut: { $gt: req.body.booking.checkIn }
-});
+        listing: listing._id,
+        status: "Booked",
+        checkIn: { $lt: req.body.booking.checkOut },
+        checkOut: { $gt: req.body.booking.checkIn }
+    });
 
-if (existingBooking) {
-    req.flash(
-        "error",
-        "Hotel is not available for the selected dates."
-    );
+    if (existingBooking) {
+        req.flash(
+            "error",
+            "Hotel is not available for the selected dates."
+        );
 
-    return res.redirect("/bookings/new/" + listing._id);
-}
+        return res.redirect("/bookings/new/" + listing._id);
+    }
 
-booking.bookingId =
-"BK-" +
-Date.now().toString().slice(-6) +
-Math.floor(Math.random()*1000);
+    booking.bookingId =
+        "BK-" +
+        Date.now().toString().slice(-6) +
+        Math.floor(Math.random() * 1000);
 
     await booking.save();
 
@@ -173,19 +173,19 @@ module.exports.downloadReceipt = async (req, res) => {
 
     if (booking.status === "Booked") {
 
-    doc
-        .fontSize(18)
-        .fillColor("green")
-        .text("Booking Confirmed");
+        doc
+            .fontSize(18)
+            .fillColor("green")
+            .text("Booking Confirmed");
 
-} else {
+    } else {
 
-    doc
-        .fontSize(18)
-        .fillColor("red")
-        .text("Booking Cancelled");
+        doc
+            .fontSize(18)
+            .fillColor("red")
+            .text("Booking Cancelled");
 
-}
+    }
     doc.end();
 
 };
