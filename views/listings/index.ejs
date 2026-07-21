@@ -1,172 +1,244 @@
-<%layout("/layouts/boilerplate")%>
-<style>
-    .filters{
-    display:flex;
-    align-items:center;
-    overflow-x:auto;
-    overflow-y:hidden;
-    flex-wrap:nowrap;
-    gap:1.5rem;
+<%layout(" /layouts/boilerplate")%>
+  <style>
+    .filters {
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      overflow-y: hidden;
+      flex-wrap: nowrap;
+      gap: 1.5rem;
 
-    margin-top:1rem;
-    padding:1rem 0;
+      margin-top: 1rem;
+      padding: 1rem 0;
 
-    scrollbar-width:none;
-  }
+      scrollbar-width: none;
+    }
 
-.filters::-webkit-scrollbar{
-    display:none;
- }
+    .filters::-webkit-scrollbar {
+      display: none;
+    }
 
-.filter{
-    flex:0 0 auto;
-    min-width:80px;
-    text-align:center;
-    opacity:0.7;
+    .filter {
+      flex: 0 0 auto;
+      min-width: 80px;
+      text-align: center;
+      opacity: 0.7;
 
-    margin:0;
- }
+      margin: 0;
+    }
 
-.filter:hover{
-    opacity:1;
-    cursor:pointer;
- }
+    .filter:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
 
-.filter p{
-    font-size:0.8rem;
- }
+    .filter p {
+      font-size: 0.8rem;
+    }
 
-.tax-info{
-    display:none;
- }
- .listing-card:hover{
-    transform: translateY(-3px)!important;
-    transition: 0.3s !important;
-}
+    .tax-info {
+      display: none;
+    }
 
-.tax-toggle{
-    flex:0 0 auto;
+    .listing-card:hover {
+      transform: translateY(-3px) !important;
+      transition: 0.3s !important;
+    }
 
-    margin-left:auto;
+    .tax-toggle {
+      flex: 0 0 auto;
 
-    border:1px solid #fe424d;
-    border-radius:1rem;
+      margin-left: auto;
 
-    padding:0.75rem 1rem;
+      border: 1px solid #fe424d;
+      border-radius: 1rem;
 
-    display:flex;
-    align-items:center;
+      padding: 0.75rem 1rem;
 
-    background:#fff1f2;
-  }
+      display: flex;
+      align-items: center;
 
-@media(max-width:768px){
+      background: #fff1f2;
+    }
 
-    .tax-taggle{
-        font-size:0.8rem;
-        padding:0.5rem;
-     }
+    @media(max-width:768px) {
 
-  }
-  
-</style>
-     
-     <div class="filters">
-      <a href="/listings" class="filter listing-link">
-    <div>
+      .tax-taggle {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+      }
+
+    }
+  </style>
+
+  <div class="filters">
+    <a href="/listings" class="filter listing-link">
+      <div>
         <i class="fa-solid fa-border-all"></i>
-    </div>
-    <p>All</p>
-</a>
-      <a href="/listings/category/Trending" class="filter listing-link">
+      </div>
+      <p>All</p>
+    </a>
+    <a href="/listings/category/Trending" class="filter listing-link">
       <div><i class="fa-solid fa-fire"></i></div>
       <p>Trending</p>
-      </a>
-      <a href="/listings/category/Rooms" class="filter listing-link">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Room</p>
-</a>
-       <a href="/listings/category/IconicCities" class="filter listing-link">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Iconic Cities</p>
-</a>
-      <a href="/listings/category/Mountains" class="filter listing-link">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Mountains</p>
-</a>
-       <a href="/listings/category/Castles" class="filter listing-link">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Castles</p>
-</a>
-      <a href="/listings/category/AmazingPools" class="filter listing-link">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Amazing Pools</p>
-</a>
-       <a href="/listings/category/Camping" class="filter listing-link">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Camping</p>
-</a>
-      <a href="/listings/category/Farms" class="filter listing-link">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Farms</p>
-</a>
-      <a href="/listings/category/Arctic" class="filter listing-link">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Arctic</p>
-</a>
-       <a href="/listings/category/Domes" class="filter listing-link">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Domes</p>
-</a>
-      <a href="/listings/category/Boat" class="filter listing-link">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>boat</p>
-</a>
-      
-    
-     <div class="tax-toggle">
+    </a>
+    <a href="/listings/category/Rooms" class="filter listing-link">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Room</p>
+    </a>
+    <a href="/listings/category/IconicCities" class="filter listing-link">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Iconic Cities</p>
+    </a>
+    <a href="/listings/category/Mountains" class="filter listing-link">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Mountains</p>
+    </a>
+    <a href="/listings/category/Castles" class="filter listing-link">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Castles</p>
+    </a>
+    <a href="/listings/category/AmazingPools" class="filter listing-link">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Amazing Pools</p>
+    </a>
+    <a href="/listings/category/Camping" class="filter listing-link">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Camping</p>
+    </a>
+    <a href="/listings/category/Farms" class="filter listing-link">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Farms</p>
+    </a>
+    <a href="/listings/category/Arctic" class="filter listing-link">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Arctic</p>
+    </a>
+    <a href="/listings/category/Domes" class="filter listing-link">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Domes</p>
+    </a>
+    <a href="/listings/category/Boat" class="filter listing-link">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>boat</p>
+    </a>
+
+
+    <div class="tax-toggle">
       <div class="form-check-reverse form-switch">
-      <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-      <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+        <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
       </div>
-      </div>
-       </div>
-     
-
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-2 g-3 row-cols-xl-4 mt-3 ">
-      <% if(allListings.length==0){%>
-        <h3>No listing found</h3>
-      <%}%>
-      <%for(let listing of allListings){%>
-        <a href="/listings/<%=listing._id%>" class="listing-link">
-          <div class="card listing-card h-100">
-            <img src="<%=listing.image.url%>" class="card-img-top listing-img" alt="listing_image" height="200rem">
-            <div class="card-img-overlay">.</div>
-            <div class="card-body">
-              <p class="card-text">
-                <b>
-                  <%=listing.title%>
-                </b><br />
-                &#8377;<%=listing.price.toLocaleString("en-IN")%>/night
-                <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
-              </p>
-            </div>
-          </div>
-        </a>
-        <%}%>
-
     </div>
+  </div>
+
+
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-2 g-3 row-cols-xl-4 mt-3 ">
+    <% if(allListings.length==0){%>
+      <h3>No listing found</h3>
+      <%}%>
+        <%for(let listing of allListings){%>
+          <div class="card listing-card h-100">
+
+            <% if(currUser){ %>
+
+              <button class="wishlist-btn wishlist-toggle" data-id="<%= listing._id %>">
+
+                <i class="<%= wishlist.includes(listing._id.toString()) ? 'fa-solid' : 'fa-regular' %> fa-heart"
+                  style="<%= wishlist.includes(listing._id.toString()) ? 'color:#ff385c' : '' %>">
+                </i>
+
+              </button>
+
+              <% } else { %>
+
+                <a href="/login" class="wishlist-btn">
+
+                  <i class="fa-regular fa-heart"></i>
+
+                </a>
+
+                <% } %>
+
+                  <a href="/listings/<%=listing._id%>" class="listing-link">
+
+                    <img src="<%=listing.image.url%>" class="card-img-top listing-img">
+
+                    <div class="card-img-overlay"></div>
+
+                    <div class="card-body">
+
+                      <p class="card-text ">
+
+                        <b>
+                          <%=listing.title%>
+                        </b><br>
+
+                        ₹<%=listing.price.toLocaleString("en-IN")%>/night
+
+                      </p>
+
+                    </div>
+
+                  </a>
+
+          </div>
+          <%}%>
+
+  </div>
 
   <script>
-    let priceToggle=document.getElementById("switchCheckDefault");
-    priceToggle.addEventListener("click",()=>{
-       let taxInfo=document.getElementsByClassName("tax-info");
-       for(info of taxInfo){
-        if(info.style.display!="inline"){
-            info.style.display="inline";
-        }else{
-          info.style.display="none";
+    let priceToggle = document.getElementById("switchCheckDefault");
+    priceToggle.addEventListener("click", () => {
+      let taxInfo = document.getElementsByClassName("tax-info");
+      for (info of taxInfo) {
+        if (info.style.display != "inline") {
+          info.style.display = "inline";
+        } else {
+          info.style.display = "none";
         }
-      } 
+      }
     });
+  </script>
+
+  <script>
+
+    const wishlistBtns = document.querySelectorAll(".wishlist-toggle");
+
+    wishlistBtns.forEach((btn) => {
+
+      btn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const listingId = btn.dataset.id;
+
+        const res = await fetch(`/listings/wishlist/${listingId}`, {
+          method: "POST"
+        });
+
+        const data = await res.json();
+
+        const icon = btn.querySelector("i");
+
+        if (data.saved) {
+
+          btn.classList.add("active");
+
+          icon.classList.remove("fa-regular");
+          icon.classList.add("fa-solid");
+
+        } else {
+
+          btn.classList.remove("active");
+
+          icon.classList.remove("fa-solid");
+          icon.classList.add("fa-regular");
+
+        }
+
+      });
+
+    });
+
   </script>

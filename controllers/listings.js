@@ -1,10 +1,25 @@
 const Listing=require("../models/listing");
 const User=require("../models/user");
 const geocode = require("../utils/geocode");
-module.exports.index=async(req,res)=>{
-    const allListings=await Listing.find({});
-   
-    res.render("listings/index.ejs",{allListings});
+module.exports.index = async (req, res) => {
+
+    const allListings = await Listing.find({});
+
+    let wishlist = [];
+
+    if(req.user){
+
+        const user = await User.findById(req.user._id);
+
+        wishlist = user.wishlist.map(id => id.toString());
+
+    }
+
+    res.render("listings/index.ejs",{
+        allListings,
+        wishlist
+    });
+
 };
 
 module.exports.newListing=async (req,res,next)=>{
@@ -90,18 +105,47 @@ module.exports.Search=async(req,res)=>{
     res.render("listings/index.ejs",{allListings});
 };
 
-module.exports.wishlist=async (req, res) => {
+// module.exports.wishlist=async (req, res) => {
 
-    let { id } = req.params;
+//     let { id } = req.params;
 
-    let user = await User.findById(req.user._id);
+//     let user = await User.findById(req.user._id);
 
-    if(!user.wishlist.includes(id)){
+//     if(!user.wishlist.includes(id)){
+//         user.wishlist.push(id);
+//         await user.save();
+//     }
+//     req.flash("success","Listing saved");
+//     res.redirect(`/listings/${id}`);
+// };
+
+module.exports.wishlist = async (req, res) => {
+
+    const { id } = req.params;
+
+    const user = await User.findById(req.user._id);
+
+    let saved = false;
+
+    if(user.wishlist.includes(id)){
+
+        user.wishlist.pull(id);
+
+    }else{
+
         user.wishlist.push(id);
-        await user.save();
+
+        saved = true;
+
     }
-    req.flash("success","Listing saved");
-    res.redirect(`/listings/${id}`);
+
+    await user.save();
+
+    res.json({
+        success:true,
+        saved:saved
+    });
+
 };
 
 module.exports.renderwishlist=async (req, res) => {
