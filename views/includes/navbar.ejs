@@ -92,6 +92,15 @@
               <a class="nav-link wish" href="/listings/wishlist"><i class="fa-solid fa-heart"></i>Wishlist</a>
               <a class="nav-link" href="/logout "><b>Log out</b></a>
             <%}%>
+            <% if(currUser){ %>
+
+<li class="nav-item">
+    <a class="nav-link" href="/bookings">
+        My Bookings
+    </a>
+</li>
+
+<% } %>
             <button id="theme-toggle" class="btn btn-dark ms-2">🌙</button>
       </div>
     </div>

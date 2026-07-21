@@ -122,6 +122,25 @@
                                 <%}%>
                                 
                     </div>
+                    <% if(currUser){ %>
+
+<div class="text-center my-3">
+    <a href="/bookings/new/<%= show._id %>" class="btn btn-dark book-btn">
+        <i class="fa-solid fa-calendar-check me-2"></i>
+        Book Now
+    </a>
+</div>
+
+<% } else { %>
+
+<div class="text-center my-3">
+    <a href="/login" class="btn btn-outline-dark book-btn">
+        <i class="fa-solid fa-right-to-bracket me-2"></i>
+        Login to Book
+    </a>
+</div>
+
+<% } %>
                     <div class="col-12 col-md-8 mx-auto mb-3">
                     <h3 >Where you will be</h3>  
                     <div id="map" >

@@ -1,0 +1,123 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+
+<div class="row">
+
+<div class="col-md-8 mx-auto">
+
+<div class="card shadow p-4">
+
+<img
+src="<%= booking.listing.image.url %>"
+class="img-fluid rounded mb-3">
+
+<h2><%= booking.listing.title %></h2>
+
+<p class="text-muted">
+<%= booking.listing.location %>,
+<%= booking.listing.country %>
+</p>
+
+<hr>
+
+<h4>Booking Details</h4>
+
+<p>
+
+<strong>Booking ID :</strong>
+
+<%= booking.bookingId %>
+
+</p>
+
+<p><strong>Name :</strong> <%= booking.name %></p>
+
+<p><strong>Email :</strong> <%= booking.email %></p>
+
+<p><strong>Phone :</strong> <%= booking.phone %></p>
+
+<p><strong>Guests :</strong> <%= booking.guests %></p>
+
+<p><strong>Check In :</strong>
+<%= booking.checkIn.toDateString() %>
+</p>
+
+<p><strong>Check Out :</strong>
+<%= booking.checkOut.toDateString() %>
+</p>
+
+<p>
+
+<strong>Status :<%=booking.status%></strong>
+
+<% if(booking.status==="Booked"){ %>
+
+</p>
+
+<%
+const nights =
+Math.ceil(
+(new Date(booking.checkOut)-new Date(booking.checkIn))
+/
+(1000*60*60*24)
+);
+%>
+
+<p>
+
+<strong>Total Nights :</strong>
+
+<%= nights %>
+
+</p>   
+
+<p>
+
+<strong>Price / Night :</strong>
+
+₹<%= booking.listing.price.toLocaleString("en-IN") %>
+
+</p>
+
+<p>
+
+<strong>Total Amount :</strong>
+
+₹<%= (booking.listing.price*nights).toLocaleString("en-IN") %>
+
+</p>
+
+<span class="badge bg-success">
+
+Booked
+
+</span>
+
+<% }else{ %>
+
+<span class="badge bg-danger">
+
+Cancelled
+
+</span>
+
+<% } %>
+
+</p>
+
+<a
+href="/bookings/<%= booking._id %>/receipt"
+class="btn btn-success mt-3">
+
+Download Receipt
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>

@@ -1,0 +1,194 @@
+<%
+const today = new Date().toISOString().split("T")[0];
+%>
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <div class="col-md-8 mx-auto">
+
+            <h2>Book Hotel</h2>
+
+            <div class="card p-4">
+
+                <h3><%= listing.title %></h3>
+
+                <p><%= listing.location %>, <%= listing.country %></p>
+
+                <h4>₹<%= listing.price.toLocaleString("en-IN") %></h4>
+
+                <hr>
+
+                <form action="/bookings/<%= listing._id %>" method="POST">
+
+                    <div class="mb-3">
+    <label class="form-label">Full Name</label>
+    <input
+        type="text"
+        name="booking[name]"
+        class="form-control"
+        required>
+</div>
+
+                  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input
+        type="email"
+        name="booking[email]"
+        class="form-control"
+        required>
+</div>
+                    <div class="mb-3">
+    <label class="form-label">Phone</label>
+    <input
+        type="text"
+        name="booking[phone]"
+        class="form-control"
+        required>
+</div>
+<div class="mb-3">
+    <label class="form-label">Check In</label>
+    <input
+        type="date"
+        id="checkIn"
+        name="booking[checkIn]"
+        class="form-control"
+        min="<%= today %>"
+        required>
+</div>
+<div class="mb-3">
+    <label class="form-label">Check Out</label>
+    <input
+        type="date"
+        id="checkOut"
+        name="booking[checkOut]"
+        class="form-control"
+        min="<%= today %>"
+        required>
+</div>
+<div class="mb-3">
+    <label class="form-label">Guests</label>
+    <input
+        type="number"
+        name="booking[guests]"
+        class="form-control"
+        min="1"
+        value="1"
+        required>
+</div>
+
+                    <button class="btn btn-dark w-100">
+                        Confirm Booking
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card booking-summary mt-4">
+
+<h5>Booking Summary</h5>
+
+<p>
+
+Price per Night :
+
+₹<%= listing.price.toLocaleString("en-IN") %>
+
+</p>
+
+<p>
+
+Total Nights :
+
+<span id="totalNights">
+
+0
+
+</span>
+
+</p>
+
+<h4>
+
+Total :
+
+₹
+
+<span id="totalPrice">
+
+0
+
+</span>
+
+</h4>
+
+</div>
+
+
+<script>
+
+const checkIn = document.getElementById("checkIn");
+const checkOut = document.getElementById("checkOut");
+const totalNights = document.getElementById("totalNights");
+
+const totalPrice = document.getElementById("totalPrice");
+const price = <%= listing.price %>;
+
+checkIn.addEventListener("change", () => {
+
+    checkOut.min = checkIn.value;
+
+    if(checkOut.value < checkIn.value){
+        checkOut.value = "";
+    }
+
+});
+
+
+
+function calculatePrice(){
+
+    if(checkIn.value && checkOut.value){
+
+        const inDate = new Date(checkIn.value);
+
+        const outDate = new Date(checkOut.value);
+
+        const diff =
+        (outDate - inDate)/(1000*60*60*24);
+
+        if(diff > 0){
+
+            totalNights.innerText = diff;
+
+            totalPrice.innerText =
+            (diff * price).toLocaleString("en-IN");
+
+        }else{
+
+            totalNights.innerText = 0;
+
+            totalPrice.innerText = 0;
+
+        }
+
+    }
+
+}
+
+checkIn.addEventListener("change",calculatePrice);
+
+checkOut.addEventListener("change",calculatePrice);
+
+
+</script>
+

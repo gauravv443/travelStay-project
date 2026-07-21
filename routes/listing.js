@@ -16,6 +16,10 @@ router.route("/")
 router.get("/new",isLoggedIn,listingController.renderNewForm);
 
 router.get("/search",listingController.Search);
+router.get(
+    "/category/:category",
+    wrapAsync(listingController.filterByCategory)
+);
 router.post("/wishlist/:id",isLoggedIn,listingController.wishlist );
 router.get("/wishlist",isLoggedIn, listingController.renderwishlist);
 router.delete(
